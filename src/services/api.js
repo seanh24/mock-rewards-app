@@ -1,9 +1,9 @@
-import {transactions} from './transactions'
+import {transactionMockData } from './transactions'
 
 const mockDataCall = async () => {
     return new Promise((res, rej) => {
         setTimeout(() => {
-            res(transactions)
+            res(transactionMockData)
         },2000)
     })
 }

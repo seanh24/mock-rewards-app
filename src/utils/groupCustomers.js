@@ -4,8 +4,9 @@ export const groupCustomers = (transactions) => {
       if(tempCustomers[item.customer_id]) {
         tempCustomers[item.customer_id].push(item)
       } else {
-        tempCustomers[item.customer_id] = [{...item}]
+        tempCustomers[item.customer_id] = [item]
       }
     })
+
     return tempCustomers
   }
