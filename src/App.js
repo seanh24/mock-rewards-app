@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+
+import { useEffect, useState } from 'react';
 import './App.css';
+import CustomerCard from './components/customerCard';
+import { mockFetch } from './services/api';
+import { groupCustomers } from './helpers/groupCustomers'
 
 function App() {
+  const [transactions, setTransactions] = useState()
+  const [customers, setCustomers] = useState()
+
+
+  
+  useEffect(() => {
+    mockFetch().then((data) => setTransactions(data))
+    
+  }, [])
+
+  useEffect(() => {
+    if(transactions) {
+      let tempData = groupCustomers(transactions)
+      setCustomers(tempData)
+    }
+  },[transactions])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Rewards System</h1>
+      {!customers ? '' :Object.keys(customers).map(customer => {
+        return <CustomerCard key={customer.customer_id} data={customers[customer]} />
+      })}
     </div>
   );
 }
