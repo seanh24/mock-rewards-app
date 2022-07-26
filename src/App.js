@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import CustomerCard from "./components/customerCard";
-import { mockFetch } from "./services/api";
-import { groupCustomers } from "./utils/groupCustomers";
+import { mockFetch } from "./api/api";
+import { groupByCustomers } from "./api/api";
+import useIsLoading from "./hooks/useIsLoading";
 
 function App() {
-  const [transactions, setTransactions] = useState();
-  const [customers, setCustomers] = useState();
+  const [transactions, setTransactions] = useState([]);
+  const [customers, setCustomers] = useState(null);
+  const [isLoading, setIsLoading, spinner] = useIsLoading(true);
 
   useEffect(() => {
     mockFetch().then((data) => setTransactions(data));
@@ -14,18 +16,21 @@ function App() {
 
   useEffect(() => {
     if (transactions) {
-      let tempData = groupCustomers(transactions);
+      let tempData = groupByCustomers(transactions);
       setCustomers(tempData);
+      setIsLoading(false);
     }
   }, [transactions]);
 
   return (
     <div className="App">
       <h1>Rewards System</h1>
-      {!customers
-        ? ""
+      {isLoading
+        ? spinner
         : Object.keys(customers).map((customer) => {
-            return <CustomerCard key={customer} data={customers[customer]} />;
+            return (
+              <CustomerCard key={customer} transactions={customers[customer]} />
+            );
           })}
     </div>
   );

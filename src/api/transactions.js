@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 
-const numberOfcustomers = 5;
-const numberOfRecords = 50;
+const numberOfcustomers = 10;
+const numberOfRecords = 100;
 
 const customers = new Array(numberOfcustomers).fill(0).map((_) => {
   return faker.datatype.uuid();
