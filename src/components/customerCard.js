@@ -21,7 +21,7 @@ const CustomerCard = (props) => {
       <section className="customerCard">
         <h2>Customer id: {transactions[0].customer_id}</h2>
         <h3>{`Total Rewards Points: ${transactionsByMonth.totalRewards}`}</h3>
-        {Object.keys(transactionsByMonth).map((key) => {
+        {Object.keys(transactionsByMonth).forEach((key) => {
           if (key !== "totalRewards") {
             let month = new Date(
               transactionsByMonth[key].transactions[0].sale_time
