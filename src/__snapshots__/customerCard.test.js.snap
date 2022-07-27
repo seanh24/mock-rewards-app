@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customer Card should match snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="customer-card"
+  >
+    <h2>
+      Customer id: 083ad411-c2a2-434d-b302-6591fa8389f5
+    </h2>
+    <h3
+      data-testid="total-rewards"
+    >
+      Total Rewards Points: 519
+    </h3>
+    <h4
+      class="customer-card__month"
+      data-testid="monthly-reward"
+    >
+      May: 270 points
+    </h4>
+    <h4
+      class="customer-card__month"
+      data-testid="monthly-reward"
+    >
+      June: 23 points
+    </h4>
+    <h4
+      class="customer-card__month"
+      data-testid="monthly-reward"
+    >
+      July: 226 points
+    </h4>
+  </section>
+</DocumentFragment>
+`;
