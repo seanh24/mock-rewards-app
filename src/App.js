@@ -28,6 +28,7 @@ function App() {
       {isLoading
         ? spinner
         : Object.keys(customers).map((customer) => {
+            console.log(customers[customer]);
             return (
               <CustomerCard key={customer} transactions={customers[customer]} />
             );

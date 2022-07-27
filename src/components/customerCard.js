@@ -18,10 +18,11 @@ const CustomerCard = (props) => {
     return <section className="customer-card">{spinner}</section>;
   } else {
     return (
-      <section className="customerCard">
+      <section className="customer-card">
         <h2>Customer id: {transactions[0].customer_id}</h2>
-        <h3>{`Total Rewards Points: ${transactionsByMonth.totalRewards}`}</h3>
-        {Object.keys(transactionsByMonth).forEach((key) => {
+        <h3 data-testid="total-rewards">{`Total Rewards Points: ${transactionsByMonth.totalRewards}`}</h3>
+
+        {Object.keys(transactionsByMonth).map((key) => {
           if (key !== "totalRewards") {
             let month = new Date(
               transactionsByMonth[key].transactions[0].sale_time
@@ -30,7 +31,11 @@ const CustomerCard = (props) => {
               month: "long",
             }).format(month);
             return (
-              <h4 key={monthStr}>
+              <h4
+                className="customer-card__month"
+                data-testid="monthly-reward"
+                key={monthStr}
+              >
                 {monthStr}: {transactionsByMonth[key].rewards} points
               </h4>
             );
