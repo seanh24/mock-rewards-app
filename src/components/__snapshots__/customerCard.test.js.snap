@@ -4,6 +4,7 @@ exports[`Customer Card should match snapshot 1`] = `
 <DocumentFragment>
   <section
     class="customer-card"
+    data-testid="customer-card"
   >
     <h2>
       Customer id: 083ad411-c2a2-434d-b302-6591fa8389f5

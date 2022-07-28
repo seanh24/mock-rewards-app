@@ -16,7 +16,6 @@ function App() {
       setIsLoading(false);
     });
   }, []);
-  //check spinner at start -> create spy for mockfetch and return promise resolve mock data -> check dom renders card properly
 
   const renderCustomerCards = () => {
     if (customers) {

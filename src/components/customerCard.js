@@ -1,4 +1,3 @@
-
 import { addPoints, groupByMonth } from "../api/transaction.api";
 
 const CustomerCard = (props) => {
@@ -6,10 +5,9 @@ const CustomerCard = (props) => {
 
   let dataWithPoints = addPoints(transactionsByCustomer);
   let dataByMonth = groupByMonth(dataWithPoints);
-  console.log('this', dataByMonth)
 
   return (
-    <section className="customer-card">
+    <section className="customer-card" data-testid="customer-card">
       <h2>Customer id: {transactionsByCustomer[0].customer_id}</h2>
       <h3 data-testid="total-rewards">{`Total Rewards Points: ${dataByMonth.totalRewards}`}</h3>
 

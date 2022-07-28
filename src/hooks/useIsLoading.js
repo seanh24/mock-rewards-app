@@ -5,7 +5,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 const useIsLoading = (bool) => {
     const [isLoading, setIsLoading] = useState(bool)
 
-    const spinner = <FontAwesomeIcon className='spinner' icon={faSpinner} />;
+    const spinner = <FontAwesomeIcon className='spinner' data-testid='spinner' icon={faSpinner} />;
     return [isLoading, setIsLoading, spinner]
 }
 

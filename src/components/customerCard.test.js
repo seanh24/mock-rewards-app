@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import CustomerCard from "./components/customerCard";
-
+import CustomerCard from "./customerCard";
 import "@testing-library/jest-dom";
-import { addPoints } from "./api/transaction.api";
 
 const testData = [
   {
@@ -54,10 +52,11 @@ describe("Customer Card", () => {
     render(<CustomerCard transactionsByCustomer={testData} />);
     const totalRewards = screen.getByTestId("total-rewards");
     const monthlyRewards = screen.getAllByTestId("monthly-reward");
-    //test value of total rewards and monthly rewards
-    expect(totalRewards).toBeInTheDocument();
-    expect(monthlyRewards).toHaveLength(3);
+    expect(totalRewards).toHaveTextContent(`Total Rewards Points: 519`);
+    expect(monthlyRewards[0]).toHaveTextContent('May: 270')
+    expect(monthlyRewards[1]).toHaveTextContent('June: 23')
+    expect(monthlyRewards[2]).toHaveTextContent('July: 226')
   });
 
-  //if users doesn't provide proper data what happen
+  //if users doesn't provide proper data what happens
 });
